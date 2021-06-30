@@ -45,6 +45,7 @@ public class YourAccountPageTest extends BaseClass {
         yrAccountPage.addNewAddress();
         yrAccountPage.createNewAddress(country, fullname, mobilenumber, pincode, flat, area, landmark, town, state, addresstype);
     }
+    //After method
     @AfterMethod
     public void tearDown() {
         getDriver().quit();
