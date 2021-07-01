@@ -1,33 +1,29 @@
 package com.amazonautomation.qa.testcase;
-
 import com.amazonautomation.qa.base.BaseClass;
 import com.amazonautomation.qa.pages.CartPage;
 import com.amazonautomation.qa.pages.HomePage;
 import com.amazonautomation.qa.pages.SignInPage;
 import com.amazonautomation.qa.pages.YourOrderPage;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 public class HomePageTest extends BaseClass {
     SignInPage signInPage;
     HomePage homePage;
     CartPage cartPage;
     YourOrderPage yourOrderPage;
-
     public HomePageTest() {
         super();
     }
-
     @BeforeMethod
     public void setUp() {
         initialization();
         signInPage = new SignInPage();
-        homePage = new HomePage();
+        homePage=new HomePage();
         homePage = signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
     }
-
     @Test
     public void verifyLoggedUserName() {
         Assert.assertTrue(homePage.loggedUserName());
@@ -68,13 +64,11 @@ public class HomePageTest extends BaseClass {
         verifySearchItem();
         homePage.off50OrMore();
     }
-
     @Test
     public void verifyCheckBoxStock() {
         verifySearchItem();
         homePage.checkboxPayOrstock();
     }
-
     @Test
     public void verifyFilterSearchItem() {
         verifySearchItem();
@@ -88,7 +82,6 @@ public class HomePageTest extends BaseClass {
         verifyFilterSearchItem();
         homePage.redmi9NewTab();
     }
-
     @Test
     public void verifyAddToCart() {
         verifyNavigateNewTab();

@@ -75,11 +75,11 @@ public class HomePage extends BaseClass {
 
     // PageFactory initialization
     public HomePage() {
-        PageFactory.initElements(getDriver(), this);
-    }
+       PageFactory.initElements(getDriver(), this);
+   }
 
     public String verifyHomepageTitle() {
-        return getDriver().getTitle();
+        return driver.getTitle();
     }
 
     public boolean loggedUserName() {

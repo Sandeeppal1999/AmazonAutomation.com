@@ -1,9 +1,9 @@
 package com.amazonautomation.qa.testcase;
-import com.amazon.qa.utilties.TestUtil;
 import com.amazonautomation.qa.base.BaseClass;
 import com.amazonautomation.qa.pages.HomePage;
 import com.amazonautomation.qa.pages.SignInPage;
 import com.amazonautomation.qa.pages.YourAccountPage;
+import com.amazonautomation.qa.utilties.TestUtil;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;

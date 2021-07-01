@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="methods" thread-count="2">
+<suite name="All Test Suite" parallel="methods" thread-count="1">
     <listeners>
         <listener class-name="com.amazonautomation.qa.extentsReportListner.ExtentsReportListner"/>
     </listeners>
@@ -13,7 +13,7 @@
                     <include name="VerifyUserLogin"/>
                 </methods>
             </class>
-            <class name="com.amazonautomation.qa.testcase.HomePageTest">
+           <!-- <class name="com.amazonautomation.qa.testcase.HomePageTest">
                  <methods>
                      <include name="verifyHomePageTitle"/>
                      <include name="verifyLoggedUserName"/>
@@ -56,7 +56,7 @@
                <methods>
                    <include name="cartPageTitle"/>
                </methods>
-           </class>
+           </class>-->
         </classes>
     </test>
 </suite>

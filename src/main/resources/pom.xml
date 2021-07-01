@@ -68,7 +68,11 @@
             <artifactId>extentreports</artifactId>
             <version>3.1.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>Amazon.com</groupId>
+            <artifactId>Amazon.com</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

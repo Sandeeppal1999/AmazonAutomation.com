@@ -1,5 +1,4 @@
 package com.amazonautomation.qa.pages;
-
 import com.amazonautomation.qa.base.BaseClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,8 +25,8 @@ public class SignInPage extends BaseClass {
     WebElement clickOnSignInSubmit;
 
     // PageFactory initialization
-    public SignInPage() {
-        PageFactory.initElements(driver, this);
+     public SignInPage() {
+       PageFactory.initElements(driver, this);
     }
 
     //Method of Testcase
