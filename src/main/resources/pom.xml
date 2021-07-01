@@ -91,7 +91,7 @@
                 <version>2.12.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src\main\resources\pom.xml</suiteXmlFile>
+                        <suiteXmlFile>src\test\test\resources\testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
