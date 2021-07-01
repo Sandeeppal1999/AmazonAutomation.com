@@ -23,7 +23,6 @@ public class SignInPageTest extends BaseClass {
 
     @Test
     public void verifySignInLabel() {
-        signInPage.navigateSignInPage();
         Assert.assertTrue(signInPage.signInLabel());
     }
 

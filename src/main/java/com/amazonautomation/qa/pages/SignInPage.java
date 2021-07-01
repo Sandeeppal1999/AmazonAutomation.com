@@ -31,6 +31,9 @@ public class SignInPage extends BaseClass {
 
     //Method of Testcase
     public boolean signInLabel() {
+        Actions action = new Actions(getDriver());
+        action.moveToElement(accountList).build().perform();
+        signInLink.click();
         return signInLabel.isDisplayed();
     }
 
@@ -41,7 +44,9 @@ public class SignInPage extends BaseClass {
     }
 
     public HomePage userLogin(String un, String pwd) {
-        clickOnSign.click();
+        Actions action = new Actions(getDriver());
+        action.moveToElement(accountList).build().perform();
+        signInLink.click();
         username.sendKeys(un);
         clickOnContinue.click();
         password.sendKeys(pwd);
