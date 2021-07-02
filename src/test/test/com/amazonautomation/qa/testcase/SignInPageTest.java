@@ -1,7 +1,7 @@
 package com.amazonautomation.qa.testcase;
+
 import com.amazonautomation.qa.base.BaseClass;
 import com.amazonautomation.qa.pages.SignInPage;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

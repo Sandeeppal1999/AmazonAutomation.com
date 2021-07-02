@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite"  >
+<suite name="All Test Suite">
     <listeners>
         <listener class-name="com.amazonautomation.qa.extentsReportListner.ExtentsReportListner"/>
     </listeners>
@@ -13,50 +13,50 @@
                     <include name="VerifyUserLogin"/>
                 </methods>
             </class>
-         <class name="com.amazonautomation.qa.testcase.HomePageTest">
-                 <methods>
-                     <include name="verifyHomePageTitle"/>
-                     <include name="verifyLoggedUserName"/>
-                     <include name="verifyUserNameVisible"/>
-                     <include name="verifyLoggedUserDuration"/>
-                     <include name="clickOnAmazonPayPage"/>
-                     <include name="clickOnYourOrder"/>
-                     <include name="verifyYourAccount"/>
-                     <include name="verifySearchItem"/>
-                     <include name="verify50OffOrMore"/>
-                     <include name="verifyCheckBoxStock"/>
-                     <include name="verifyFilterSearchItem"/>
-                     <include name="verifyNavigateNewTab"/>
-                     <include name="verifyAddToCart"/>
-                     <include name="verifyScrollDown"/>
-                     <include name="verifyNavigateToCart"/>
-                     <include name="verifyBackToTop"/>
-                     <include name="verifyCarouselClickable"/>
-                     <include name="amazonLogoImageTest"/>
-                     <include name="noOfLinkOnHomePage"/>
-                     <include name="loginPageTitleTest"/>
-                 </methods>
-             </class>
-        <class name="com.amazonautomation.qa.testcase.YourAccountPageTest">
-                 <methods>
-                     <include name="navigateToAddressLink"/>
-                     <include name="verifyAddNewAddress"/>
-                     <include name="createNewADDTest"/>
-                 </methods>
-             </class>
+            <class name="com.amazonautomation.qa.testcase.HomePageTest">
+                <methods>
+                    <include name="verifyHomePageTitle"/>
+                    <include name="verifyLoggedUserName"/>
+                    <include name="verifyUserNameVisible"/>
+                    <include name="verifyLoggedUserDuration"/>
+                    <include name="clickOnAmazonPayPage"/>
+                    <include name="clickOnYourOrder"/>
+                    <include name="verifyYourAccount"/>
+                    <include name="verifySearchItem"/>
+                    <include name="verify50OffOrMore"/>
+                    <include name="verifyCheckBoxStock"/>
+                    <include name="verifyFilterSearchItem"/>
+                    <include name="verifyNavigateNewTab"/>
+                    <include name="verifyAddToCart"/>
+                    <include name="verifyScrollDown"/>
+                    <include name="verifyNavigateToCart"/>
+                    <include name="verifyBackToTop"/>
+                    <include name="verifyCarouselClickable"/>
+                    <include name="amazonLogoImageTest"/>
+                    <include name="noOfLinkOnHomePage"/>
+                    <include name="loginPageTitleTest"/>
+                </methods>
+            </class>
+            <class name="com.amazonautomation.qa.testcase.YourAccountPageTest">
+                <methods>
+                    <include name="navigateToAddressLink"/>
+                    <include name="verifyAddNewAddress"/>
+                    <include name="createNewADDTest"/>
+                </methods>
+            </class>
             <class name="com.amazonautomation.qa.testcase.YourOrderPageTest">
-               <methods>
-                   <include name="verifyYrOrderPageLabel"/>
-                   <include name="VerifyPlacedOrderDetails"/>
-                   <include name="validateSearchBox"/>
-                   <include name="verifyAddToCart"/>
-               </methods>
-           </class>
-           <class name="com.amazonautomation.qa.testcase.CartPageTest">
-               <methods>
-                   <include name="cartPageTitle"/>
-               </methods>
-           </class>
+                <methods>
+                    <include name="verifyYrOrderPageLabel"/>
+                    <include name="VerifyPlacedOrderDetails"/>
+                    <include name="validateSearchBox"/>
+                    <include name="verifyAddToCart"/>
+                </methods>
+            </class>
+            <class name="com.amazonautomation.qa.testcase.CartPageTest">
+                <methods>
+                    <include name="cartPageTitle"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
