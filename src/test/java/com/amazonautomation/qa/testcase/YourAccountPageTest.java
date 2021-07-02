@@ -1,5 +1,4 @@
 package com.amazonautomation.qa.testcase;
-
 import com.amazonautomation.qa.base.BaseClass;
 import com.amazonautomation.qa.pages.HomePage;
 import com.amazonautomation.qa.pages.SignInPage;
@@ -9,17 +8,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 public class YourAccountPageTest extends BaseClass {
     SignInPage signInPage;
     HomePage homePage;
     YourAccountPage yrAccountPage;
     TestUtil testUtil;
-
     public YourAccountPageTest() {
         super();
     }
-
     @BeforeMethod
     public void setUp() {
         initialization();
