@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>AmazonAutomation</groupId>
-    <artifactId>AmazonRun</artifactId>
+    <groupId>org.example</groupId>
+    <artifactId>AmazonAutomation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -68,11 +68,6 @@
             <artifactId>extentreports</artifactId>
             <version>3.1.2</version>
         </dependency>
-        <dependency>
-            <groupId>Amazon.com</groupId>
-            <artifactId>Amazon.com</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -102,6 +97,4 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
-
 </project>
