@@ -86,29 +86,16 @@ public class SignInPage extends BaseClass {
     public void scrollDownHomePage() {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView();", scrollTillBackToTop);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         js.executeScript("scroll(0, -250);");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void  noOfCarousel() {
-        List<WebElement> list=carousel;
-        Integer noOfCarousel=list.size();
-        System.out.println("No of Carousel:-"+noOfCarousel);
+        System.out.println("No of Carousel:-"+carousel.size());
     }
     public void carouselClickable() {
-        List<WebElement> list=carousel;
-        Integer noOfCarousel=list.size();
         int click=0;
-        for (int i = 0; i <=noOfCarousel; i++) {
+        for (int i = 0; i <=carousel.size(); i++) {
             carouselButton.click();
             click++;
         }
