@@ -13,7 +13,7 @@ public class SignInPageTest extends BaseClass {
         signInPage = new SignInPage();
     }
     @Test
-    public void verifySignInNavigation() {
+    public void SignInNavigation() {
         signInPage.navigateSignInPage();
     }
     @Test
@@ -21,7 +21,7 @@ public class SignInPageTest extends BaseClass {
         Assert.assertTrue(signInPage.signInLabel());
     }
     @Test
-    public void VerifyUserLogin() {
+    public void checkUserLogin() {
         signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
     }
     @Test
@@ -48,7 +48,7 @@ public class SignInPageTest extends BaseClass {
         signInPage.needHelp();
     }
     @Test
-    public void verifyForgotPassword(){
+    public void verifyForgotPasswordClickable(){
         signInPage.needHelp_ForgotPassword();
     }
 
