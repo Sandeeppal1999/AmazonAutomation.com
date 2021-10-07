@@ -4,59 +4,70 @@ import com.amazonautomation.qa.pages.HomePage;
 import com.amazonautomation.qa.pages.SignInPage;
 import com.amazonautomation.qa.pages.YourAccountPage;
 import com.amazonautomation.qa.utilties.TestUtil;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 public class YourAccountPageTest extends BaseClass {
     SignInPage signInPage;
-    HomePage homePage;
-    YourAccountPage yrAccountPage;
+    YourAccountPage yourAccountPage;
     TestUtil testUtil;
+    HomePage homePage;
     public YourAccountPageTest() {
         super();
     }
     @BeforeMethod
     public void setUp() {
         initialization();
-        signInPage = new SignInPage();
-        homePage = new HomePage();
+        signInPage=new SignInPage();
         testUtil = new TestUtil();
-        homePage = signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
-        yrAccountPage = homePage.clickOnYourAccount();
+        homePage=new HomePage();
+        yourAccountPage=new YourAccountPage();
+        homePage= signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
+        yourAccountPage= homePage.navigateYourAccountPage();
     }
-
     @Test
-    public void navigateToAddressLink() {
-        yrAccountPage.navigateToAddress();
+    public void verifyYourAccountPageTitle(){
+        String title = yourAccountPage.validateYourAccountTitle();
+        Assert.assertEquals(title,"Your Account");
     }
-
+    @Test
+    public void verifyYourAccountLabel(){
+        String label=yourAccountPage.yourAccountLabel();
+        Assert.assertEquals(label,"Your Account");
+    }
+    @Test
+    public void verifyNavigateYourOrder(){
+        yourAccountPage.yourOrderNavigate();
+    }
+    @Test
+    public void verifyNavigateYourAddress() {
+        yourAccountPage.yourAddressNavigate();
+    }
+    @Test
+    public void verifyYourAddressesLabel(){
+        String label=yourAccountPage.yourAddressesLabel();
+        Assert.assertEquals(label,"Your Addresses");
+    }
     @Test
     public void verifyAddNewAddress() {
-        yrAccountPage.navigateToAddress();
-        yrAccountPage.addNewAddress();
-    }
 
+        yourAccountPage.addNewAddress();
+    }
     @DataProvider(name = "getAmazonTestData")
     public Object[][] getAmazonTestData() {
         Object[][] data = TestUtil.getTestData_AddNewAddress();
         return data;
     }
-
     @Test(dataProvider = "getAmazonTestData")
-    public void createNewADDTest(String country, String fullname, String mobilenumber, String pincode, String flat, String area, String landmark, String town, String state, String addresstype) throws InterruptedException {
-        yrAccountPage.navigateToAddress();
-        yrAccountPage.addNewAddress();
-        yrAccountPage.createNewAddress(country, fullname, mobilenumber, pincode, flat, area, landmark, town, state, addresstype);
+    public void VerifyCreateNewADD(String country, String fullName, String mobileNo, String pinCode, String flat, String area, String landmark, String town, String state, String addressType)
+    {
+        yourAccountPage.createNewAddress(country, fullName, mobileNo, pinCode, flat, area, landmark, town, state, addressType);
     }
-
-    //After method
     @AfterMethod
     public void tearDown() {
         getDriver().quit();
         unload();
     }
-
 }
-
-

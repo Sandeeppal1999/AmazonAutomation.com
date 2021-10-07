@@ -1,18 +1,16 @@
 package com.amazonautomation.qa.utilties;
-
 import com.amazonautomation.qa.base.BaseClass;
+import org.apache.commons.compress.archivers.dump.InvalidFormatException;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 public class TestUtil extends BaseClass {
     public static long PAGE_LOAD_TIMEOUT = 20;
     public static long IMPLICIT_WAIT = 20;
@@ -20,9 +18,8 @@ public class TestUtil extends BaseClass {
     public static XSSFWorkbook workbook;
     public static String TESTDATASHEET_PATH = "C:/Users/Sandeep pal/IdeaProjects/" +
             "AmazonAutomation/src/main/java\\com/amazonautomation/qa/testdata/TestDataAddNewAddress.xlsx";
-
     public static Object[][] getTestData_AddNewAddress() {
-        FileInputStream file = null;
+        FileInputStream file=null;
         try {
             file = new FileInputStream(TESTDATASHEET_PATH);
         } catch (FileNotFoundException e) {
@@ -30,6 +27,9 @@ public class TestUtil extends BaseClass {
         }
         try {
             workbook = new XSSFWorkbook(file);
+        }
+        catch (InvalidFormatException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +43,6 @@ public class TestUtil extends BaseClass {
         }
         return data;
     }
-
     public static void takeScreenshotAtEndOfTest() throws IOException {
         File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         String currentDir = System.getProperty("user.dir");

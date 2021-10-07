@@ -22,13 +22,15 @@ public class HomePage extends BaseClass {
     @FindBy(xpath = "//span[normalize-space()='Your Orders']")
     WebElement yourOrder;
     @FindBy(xpath = "//span[@id='nav-link-accountList-nav-line-1']")
-    WebElement accountlist;
+    WebElement accountList;
     @FindBy(xpath = "//span[normalize-space()='Your Account']")
     WebElement yourAccount;
     @FindBy(xpath = "//input[@id='twotabsearchtextbox']")
     WebElement searchTextBox;
     @FindBy(xpath = "//input[@id='nav-search-submit-button']")
-    WebElement searchTextBoxicon;
+    WebElement searchTextBoxIcon;
+    @FindBy(xpath = "//span[@class='a-color-state a-text-bold']")
+    WebElement searchResult;
     @FindBy(xpath = "//span[contains(text(),'25% Off or more')]")
     WebElement discountOff25;
     @FindBy(xpath = "//*[@id=\"p_n_is_cod_eligible/4931671031\"]/span/a/div/label/i")
@@ -65,49 +67,47 @@ public class HomePage extends BaseClass {
     public boolean loggedUserDuration() {
         return durationLoggedUser.isDisplayed();
     }
-    public void clickOnAmazonPay() {
+    public AmazonPayPage clickOnAmazonPay() {
         amazonPay.click();
+      return new AmazonPayPage();
     }
     public void clickOnYourOrderPage() {
         Actions action = new Actions(getDriver());
-        action.moveToElement(accountlist).build().perform();
+        action.moveToElement(accountList).build().perform();
         yourOrder.click();
     }
     public void clickOnYourAccount() {
         Actions action = new Actions(getDriver());
-        action.moveToElement(accountlist).build().perform();
+        action.moveToElement(accountList).build().perform();
         yourAccount.click();
     }
 
     public void searchItem() {
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
+        searchTextBoxIcon.click();
+        String res =searchResult.getText();
+        if(res==prop.getProperty("searchText")){
+            System.out.println("correct result searched:");
+        }
     }
     public void listOfSponsoredSearchItem(){
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
-
+        searchTextBoxIcon.click();
         if(listOfSearchItemHorizontalSpo.size()!=0)
-        {   Integer sizeOfList = listOfSearchItemHorizontalSpo.size();
-            System.out.println("<-----No of Searched item found:-" + sizeOfList);
-            List<WebElement> list=listOfSearchItemHorizontalSpo;
-            for (int i = 1; i <list.size() ; i++)
-            {
-                System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
-                WebElement element=list.get(i);
+        { System.out.println("<-----No of Searched item found:-" + listOfSearchItemHorizontalSpo.size());
+            for (int i = 0; i <listOfSearchItemHorizontalSpo.size() ; i++)
+            { System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
+                WebElement element=listOfSearchItemHorizontalSpo.get(i);
                 String textPro= element.getText();
                 System.out.println("->"+i+" Product of List:"+"\n" +"Name of Product:-"+textPro);
             }
         }
-        else {Integer sizeOfList = listOfSearchItemVerticalSpo.size();
-            System.out.println("<-----No of Searched item found:-" + sizeOfList);
-            List<WebElement> list=listOfSearchItemVerticalSpo;
-            for (int i = 1; i <list.size() ; i++)
-            {
-                System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
-                WebElement element=list.get(i);
+        else { System.out.println("<-----No of Searched item found:-" + listOfSearchItemVerticalSpo.size());
+            for (int i = 0; i <listOfSearchItemVerticalSpo.size() ; i++)
+            { System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
+                WebElement element=listOfSearchItemVerticalSpo.get(i);
                 String textPro= element.getText();
                 System.out.println("->"+i+" Product of List:"+"\n" +"Name of Product:-"+textPro);
             }
@@ -116,14 +116,11 @@ public class HomePage extends BaseClass {
     public void listOfSearchItem(){
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
-            Integer sizeOfList = listOfSearchItem.size();
-            System.out.println("<-----No of Searched item found:-" + sizeOfList);
-            List<WebElement> list=listOfSearchItem;
-            for (int i = 1; i <list.size() ; i++)
-           {
-               System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
-               WebElement element=list.get(i);
+        searchTextBoxIcon.click();
+            System.out.println("<-----No of Searched item found:-" + listOfSearchItem.size());
+            for (int i = 1; i <listOfSearchItem.size() ; i++)
+           { System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
+               WebElement element=listOfSearchItem.get(i);
                String textPro= element.getText();
                System.out.println("->"+i+" Product of List:"+"\n" +"Name of Product:-"+textPro);
            }
@@ -131,15 +128,12 @@ public class HomePage extends BaseClass {
     public void discount25perOrMore() {
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
+        searchTextBoxIcon.click();
         discountOff25.click();
-        Integer sizeOfList = listOfSearchItem.size();
-        System.out.println("<-----No of Searched item found:-" + sizeOfList);
-        List<WebElement> list=listOfSearchItem;
-        for (int i = 1; i <list.size() ; i++)
-        {
-            System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
-            WebElement element=list.get(i);
+        System.out.println("<-----No of Searched item found:-" + listOfSearchItem.size());
+        for (int i = 1; i <listOfSearchItem.size() ; i++)
+        { System.out.println("<----------------------------------------------------------------------------------------------------------------------->");
+            WebElement element=listOfSearchItem.get(i);
             String textPro= element.getText();
             System.out.println("->"+i+" Product of List:"+"\n" +"Name of Product:-"+textPro);
         }
@@ -147,7 +141,7 @@ public class HomePage extends BaseClass {
     public void selectCheckBoxPayOnDeliveryOutOfStock() {
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
+        searchTextBoxIcon.click();
         discountOff25.click();
         if (eligibleForPayOnDel.isSelected()) {
             System.out.println("CheckBox is Already selected");
@@ -163,47 +157,40 @@ public class HomePage extends BaseClass {
     public void fetchNthProduct() {
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
-        List<WebElement> list=listOfSearchItem;
+        searchTextBoxIcon.click();
         String nthPro=prop.getProperty("nthProduct");
         int num = Integer.parseInt(nthPro);
-        for (int i = 1; i < list.size(); i++) {
+        for (int i = 1; i < listOfSearchItem.size(); i++) {
             if(i==num)
             {
-                WebElement element = list.get(i);
+                WebElement element = listOfSearchItem.get(i);
                 element.click();
                 String textPro = element.getText();
                 System.out.println("-->" + i + " Product of List:--->" + textPro);
             }
-            
         }
     }
     public ProductDetailsPage fetchItemDetails()  {
         searchTextBox.click();
         searchTextBox.sendKeys(prop.getProperty("searchText"));
-        searchTextBoxicon.click();
+        searchTextBoxIcon.click();
         List<WebElement> list=listOfSearchItem;
         String nthPro=prop.getProperty("nthProduct");
         int num = Integer.parseInt(nthPro);
-        for (int i = 1; i < list.size(); i++) {
+        for (int i = 1; i < listOfSearchItem.size(); i++) {
             if(i==num) {
-                WebElement element = list.get(i);
+                WebElement element = listOfSearchItem.get(i);
+                element.click();
                 String textPro = element.getText();
                 System.out.println("-->" + i + " Product of List:--->" + textPro);
-                element.click();
-               // String parentWin=getDriver().getWindowHandle();
+//                String parentWin=getDriver().getWindowHandle();
                 for(String winHandle:getDriver().getWindowHandles()){
                   getDriver().switchTo().window(winHandle);
                 }
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return new ProductDetailsPage();
+//                return new ProductDetailsPage();
             }
         }
-        return null;
+        return new ProductDetailsPage();
     }
     public boolean amazonLogoImage() {
         return amazonLogo.isDisplayed();

@@ -1,7 +1,5 @@
 package com.amazonautomation.qa.testcase;
-
 import com.amazonautomation.qa.base.BaseClass;
-import com.amazonautomation.qa.pages.CartPage;
 import com.amazonautomation.qa.pages.HomePage;
 import com.amazonautomation.qa.pages.SignInPage;
 import com.amazonautomation.qa.pages.YourOrderPage;
@@ -9,47 +7,51 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 public class YourOrderPageTest extends BaseClass {
+    YourOrderPage yourOrderPage;
     SignInPage signInPage;
     HomePage homePage;
-    YourOrderPage yourOrderPage;
-    CartPage cartPage;
-
     public YourOrderPageTest() {
         super();
     }
-
     @BeforeMethod
     public void setUp() {
         initialization();
-        signInPage = new SignInPage();
-        homePage = new HomePage();
-        cartPage = new CartPage();
-        homePage = signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
-        yourOrderPage = homePage.clickOnYourOrderPage();
+        signInPage=new SignInPage();
+        homePage=new HomePage();
+        yourOrderPage=new YourOrderPage();
+        homePage= signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
+        yourOrderPage= homePage.navigateYourOrderPage();
     }
-
     @Test
-    public void verifyYrOrderPageLabel() {
-        Assert.assertTrue(yourOrderPage.YrOrderLabel());
+    public void verifyYourOrderTitle(){
+         String title=yourOrderPage.yourOrderPageTitle();
+         Assert.assertEquals(title,"Your Orders");
     }
-
     @Test
-    public void VerifyPlacedOrderDetails() {
+    public void verifyYourOrderPageLabel() {
+        Assert.assertTrue(yourOrderPage.YourOrderLabel());
+    }
+    @Test
+    public void VerifyDropDownFilter() {
         yourOrderPage.placedOrderDropDown();
     }
-
     @Test
-    public void validateSearchBox() {
-        yourOrderPage.searchBar();
+    public void verifyYourOrderedSearchPro() {
+        yourOrderPage.searchOrderedProduct();
     }
-
     @Test
-    public void verifyAddToCart() throws InterruptedException {
-        yourOrderPage.addToCartPage();
+    public void verifyBuyAgainOrderedItem() {
+        yourOrderPage.buyAgain();
     }
-
+//    @Test
+    public void verifyAddToCart()  {
+        yourOrderPage.addToCartSearchPro();
+    }
+    @Test
+    public void verifyDeleteCart(){
+        yourOrderPage.cleanMethod();
+    }
     @AfterMethod
     public void tearDown() {
         getDriver().quit();

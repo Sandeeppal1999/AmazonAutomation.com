@@ -26,14 +26,14 @@ public class HomePageTest extends BaseClass {
         Assert.assertEquals(title,"Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
     }
     @Test
-    public void verifyHelloUserName() {
+    public void verifyHelloUserNameVisible() {
         Assert.assertTrue(homePage.helloUserNameVisible());
     }
-    @Test
-    public void verifyHiUserName() {
+    //@Test
+    public void verifyHiUserNameVisible() {
         Assert.assertTrue(homePage.hiUserNameVisible());
     }
-    @Test
+   // @Test
     public void verifyLoggedUserDuration() {
         Assert.assertTrue(homePage.loggedUserDuration());
     }

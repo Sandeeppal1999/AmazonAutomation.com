@@ -5,41 +5,35 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-public class CartPageTest extends BaseClass {
+public class OrderPlacedPageTest extends BaseClass {
+    OrderPlacedPage orderPlacedPage;
     SignInPage signInPage;
     HomePage homePage;
-    YourOrderPage yourOrderPage;
-    CartPage cartPage;
     ProductDetailsPage productDetailsPage;
-    public CartPageTest() {
+    CartPage cartPage;
+    public OrderPlacedPageTest() {
         super();
     }
     @BeforeMethod
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         initialization();
+        homePage = new HomePage();
         signInPage=new SignInPage();
-        homePage=new HomePage();
         productDetailsPage=new ProductDetailsPage();
         cartPage=new CartPage();
+        orderPlacedPage=new OrderPlacedPage();
         homePage= signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
         productDetailsPage =homePage.fetchItemDetails();
         cartPage=productDetailsPage.navigateToCartPage();
+        orderPlacedPage=cartPage.proceedToBuyItem();
     }
     @Test
-    public void verifyCartPageTitle() {
-        String cartPageTitle = cartPage.validateCartPageTitle();
-        Assert.assertEquals(cartPageTitle, "Amazon.in Shopping Cart", "CartPage title doesnot match");
-    }
-    @Test
-    public void verifyShoppingCartLabel(){
-        cartPage.shoppingCartLabel();
-    }
-    @Test
-    public void verifyProceedToCart(){
-        cartPage.proceedToBuyItem();
+    public void verifyTitleOfPlacedOrderPage(){
+        String orderPlacedPageTitle = orderPlacedPage.getTitleOrderPlacedPage();
+        Assert.assertEquals(orderPlacedPageTitle, "Select a delivery address", "orderPlacedPage title does not match");
     }
     @AfterMethod
-    public void tearDown()  {
+    public void tearDown() {
         getDriver().quit();
         unload();
     }
