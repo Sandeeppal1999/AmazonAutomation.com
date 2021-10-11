@@ -47,6 +47,8 @@ public class HomePage extends BaseClass {
     List<WebElement> listOfSearchItemVerticalSpo;
     @FindBy(xpath = "//span[normalize-space()='Account & Lists']//span[@class='nav-icon nav-arrow']")
     WebElement getAccountList;
+    @FindBy(xpath = "//div[@id=\"nav-cart-count-container\"]")
+    WebElement cart;
 
     // PageFactory initialization
     public HomePage() {
@@ -185,9 +187,9 @@ public class HomePage extends BaseClass {
                 System.out.println("-->" + i + " Product of List:--->" + textPro);
 //                String parentWin=getDriver().getWindowHandle();
                 for(String winHandle:getDriver().getWindowHandles()){
-                  getDriver().switchTo().window(winHandle);
+                    getDriver().switchTo().window(winHandle);
                 }
-//                return new ProductDetailsPage();
+                return new ProductDetailsPage();
             }
         }
         return new ProductDetailsPage();
@@ -212,5 +214,9 @@ public class HomePage extends BaseClass {
         new WebDriverWait(getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(yourOrder));
         yourOrder.click();
         return new YourOrderPage();
+    }
+    public CartPage cartPageNavigate(){
+        cart.click();
+        return new CartPage();
     }
 }

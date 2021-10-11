@@ -17,7 +17,7 @@ public class HomePageTest extends BaseClass {
         initialization();
         homePage = new HomePage();
         signInPage=new SignInPage();
-       homePage= signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
+       homePage =signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
     }
     @Test(priority = 1)
     public void verifyHomePageTitle() {
@@ -26,14 +26,14 @@ public class HomePageTest extends BaseClass {
         Assert.assertEquals(title,"Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
     }
     @Test
-    public void verifyHelloUserNameVisible() {
+    public void verifyHelloUserName() {
         Assert.assertTrue(homePage.helloUserNameVisible());
     }
-    //@Test
-    public void verifyHiUserNameVisible() {
+//    @Test
+    public void verifyHiUserName() {
         Assert.assertTrue(homePage.hiUserNameVisible());
     }
-   // @Test
+//    @Test
     public void verifyLoggedUserDuration() {
         Assert.assertTrue(homePage.loggedUserDuration());
     }
@@ -93,6 +93,10 @@ public class HomePageTest extends BaseClass {
     @Test
     public void verifyNavigateYourOrderPage(){
         homePage.navigateYourOrderPage();
+    }
+    @Test
+    public void navigateTOCartPage(){
+        homePage.cartPageNavigate();
     }
     @AfterMethod
     public void tearDown() {
