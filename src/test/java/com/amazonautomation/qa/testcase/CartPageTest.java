@@ -22,8 +22,7 @@ public class CartPageTest extends BaseClass {
         productDetailsPage=new ProductDetailsPage();
         cartPage=new CartPage();
         homePage= signInPage.userLogin(prop.getProperty("username"), prop.getProperty("password"));
-        productDetailsPage =homePage.fetchItemDetails();
-        cartPage=productDetailsPage.navigateToCartPage();
+       cartPage= homePage.cartPageNavigate();
     }
     @Test
     public void verifyCartPageTitle() {
@@ -37,6 +36,25 @@ public class CartPageTest extends BaseClass {
     @Test
     public void verifyProceedToCart(){
         cartPage.proceedToBuyItem();
+    }
+    @Test
+    public void navigationTOCart(){
+        System.out.println("hello");
+    }
+    @Test
+    public void noOfItemsInCart(){
+    cartPage.checkCartCount();
+    }
+    @Test
+    public void verifyCartCountEqNoOfCartItem(){
+       cartPage.cartCountEqCartSize();
+    }
+    @Test
+    public void deleteNthItem(){
+        cartPage.deleteNthCartItem();   }
+    //@Test
+    public void deleteAllItem(){
+       cartPage.deleteAllItemFromCart();
     }
     @AfterMethod
     public void tearDown()  {
