@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
-
 public class SignInPage extends BaseClass {
     @FindBy(xpath = "//span[@id='nav-link-accountList-nav-line-1']")
     @CacheLookup
@@ -56,7 +55,7 @@ public class SignInPage extends BaseClass {
     public void commonCodeSignPage(){
         Actions action = new Actions(getDriver());
         action.moveToElement(accountList).perform();
-        new WebDriverWait(getDriver(),Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(signInLink));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(signInLink));
         signInLink.click();
     }
     public boolean signInLabel()  {
@@ -66,7 +65,6 @@ public class SignInPage extends BaseClass {
     public void navigateSignInPage() {
         commonCodeSignPage();
     }
-
     public HomePage userLogin(String un, String pwd) {
         commonCodeSignPage();
         username.sendKeys(un);
@@ -89,7 +87,6 @@ public class SignInPage extends BaseClass {
         js.executeScript("scroll(0, -250);");
 
     }
-
     public void  noOfCarousel() {
         System.out.println("No of Carousel:-"+carousel.size());
     }
