@@ -15,7 +15,6 @@ public class AmazonPayPage extends BaseClass {
     WebElement addMoneyLimitText;
     @FindBy(xpath = "//div[@class='a-section slot-body-margin-desktop-new']")
     WebElement amazonPayService;
-
     public AmazonPayPage() { PageFactory.initElements(getDriver(), this);
     }
     public void clickOnAddMoney(){
@@ -24,7 +23,7 @@ public class AmazonPayPage extends BaseClass {
         addMoney.click();
         softAssert.assertEquals(driver.getTitle(),"Add Money");
         softAssert.assertAll();
-          }
+    }
     public void addMoneyLimit(){
         addMoney.click();
         String limit=addMoneyLimitText.getText();
@@ -32,5 +31,6 @@ public class AmazonPayPage extends BaseClass {
         Assert.assertEquals(limit,"You can add upto ₹10000.00");
     }
     public void setAmazonPayService(){
+        // need to implement the method with the collection and data structure.
     }
 }
